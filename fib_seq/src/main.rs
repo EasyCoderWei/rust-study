@@ -1,3 +1,9 @@
+fn next_val(a: &mut i32, b: &mut i32) {
+    let c = *a + *b;
+    *a = *b;
+    *b = c;
+}
+
 fn fib_loop(n: u8) {
     let mut a = 1;
     let mut b = 1;
@@ -10,12 +16,14 @@ fn fib_loop(n: u8) {
             break;
         }
 
-        let c = a + b;
-        a = b;
-        b = c;
-        i += 1;
+        //let c = a + b;
+        //a = b;
+        //b = c;
+        next_val(&mut a, &mut b);
 
-        println!("next val is {}", c);
+        println!("next val is {}", b);
+
+        i += 1;
     }
 
     println!("====> loop end ...");
@@ -27,12 +35,14 @@ fn fib_while(n: u8) {
     println!("====> while start ...");
 
     while i < n {
-        let c = a + b;
-        a = b;
-        b = c;
-        i += 1;
+        //let c = a + b;
+        //a = b;
+        //b = c;
+        next_val(&mut a, &mut b);
 
-        println!("next val is {}", c);
+        println!("next val is {}", b);
+
+        i += 1;
     }
 
     println!("====> while end ...");
@@ -44,11 +54,12 @@ fn fib_for(n: u8) {
     println!("====> for start ...");
 
     for _i in 2..n {
-        let c = a + b;
-        a = b;
-        b = c;
+        //let c = a + b;
+        //a = b;
+        //b = c;
+        next_val(&mut a, &mut b);
 
-        println!("next val is {}", c);
+        println!("next val is {}", b);
     }
 
     println!("====> for end ...");
